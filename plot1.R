@@ -15,3 +15,4 @@ hh.power.con$Date <- as.Date(hh.power.con$Date,"%m/%d/%Y")
 hist(table(hh.power.con$Global_active_power),col='red',xlim=c(1,10),ylim=c(0,600),
      breaks=c(0,seq(2,50,2)),xlab='Global Active Power(kilowatts)',main='Global Active Power')
 dev.copy(png,file='exploratoryanalysis/plot1.png')
+dev.off()
