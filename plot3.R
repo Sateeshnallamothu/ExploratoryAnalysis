@@ -16,9 +16,13 @@ hh.power.con<-fread("household_power_consumption.txt") %>%
 hh.power.con$DateTime<-strptime(paste(hh.power.con$Date,hh.power.con$Time,sep = ' '),"%m/%d/%Y %H:%M:%S")
 ##hh.power.con$Date <- as.Date(hh.power.con$Date,"%m/%d/%Y")
 
-plot(hh.power.con$DateTime,hh.power.con$Global_active_power,type="l",
-    ylab='Global Active Power (kilowatts)',main='Global Active Power',xlab = '')
+plot(hh.power.con$DateTime,hh.power.con$Sub_metering_1,type="l",
+     ylab='Energy Sub Metering',main='Global Active Power',xlab = '',ylim =c(0,30))
+points(hh.power.con$DateTime,hh.power.con$Sub_metering_2,type="l",col='red')
+points(hh.power.con$DateTime,hh.power.con$Sub_metering_3,type="l",col='blue')
+legend('topright',legend=c('Sub_metering_1','Sub_metering_2','Sub_metering_3'),
+       col=c('black','red','blue'),lty=1,cex=0.5)
 
 # write to file and close the device.
-dev.copy(png,file='exploratoryanalysis/plot2.png')
+dev.copy(png,file='exploratoryanalysis/plot3.png')
 dev.off()
